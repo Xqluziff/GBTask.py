@@ -26,7 +26,7 @@ numbers = int(input('Сколько всего журавликов?'))
 if numbers < 6 or numbers % 6 !=0:
     print('Не корректное число')
 else:
-    katy = numbers // 3  * 2
+    katy = numbers // 3 * 2
     petSer = (numbers - katy) // 2
 
     print(f'Петя:{petSer} \n'
