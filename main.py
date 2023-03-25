@@ -1,115 +1,79 @@
+# 1. Последовательностью Фибоначчи называется последовательность чисел a0, a1, ..., an, ..., где
+#
+# a0 = 0, a1 = 1, ak = ak-1 + ak-2 (k > 1).
+#
+# Требуется найти N-е число Фибоначчи
+
+# 0, 1, 1, 2, 3, 5, 8, 13...
 
 
-            # Задача 16: Требуется вычислить, сколько раз встречается некоторое число X в массиве A.
-            # Пользователь в первой строке вводит натуральное число N – количество элементов в массиве.
-            # В последующих  строках записаны N целых чисел Ai. Последняя строка содержит число X.
-            # Попробуйте использовать метод count(), а также решите задачу с помощью своего алгоритма (без count).
-            # Замерьте время работы двух алгоритмов и сравните, подумайте, почему оно отличается.
-            #
-            # *Пример:*
-            #
-            # 5
-            #     1 2 3 4 5
-            #     3
-            #     -> 1
+# Хакер Василий получил доступ к классному журналу и хочет заменить все свои минимальные оценки на максимальные.
+# Напишите программу, которая заменяет оценки Василия, но наоборот: все максимальные – на минимальные.
 
-import time
+# Напишите функцию, которая принимает одно число и проверяет, является ли оно простым
 
-size = int(input('Количество элементов в списке: '))
-lists = []
-count = 0
-start1 = time.perf_counter()        # start
-for i in range(size):
-    x = int(input(f'Введите {i+1} элемента списка: '))
-    lists.append(x)
-print(lists)
-for i in range(size):
-    if lists[i] == x:
-        count += 1
-end1 = time.perf_counter()           # stop
-t1 = end1 - start1
-print(f'значение {x} -> {count} раз')
-
-start2 = time.perf_counter()         # start
-print(lists.count(lists[size-1]))
-end2 = time.perf_counter()           # stop
-t2 = end2 - start2
-
-print(f'Первый алгоритм работает медленне в {(round(t1 / t2))} раз чем count()')
+#
+# def fibonachi_recursion(serial_number):
+#     if serial_number == 1:
+#         return 1
+#     if serial_number == 2:
+#         return 1
+#     return fibonachi_recursion(serial_number - 1) + fibonachi_recursion(serial_number - 2)
+#
+#
+# def fibonachi_iteration(serial_number):
+#     first = 0
+#     second = 1
+#     if serial_number == 1:
+#         return first
+#     if serial_number == 2:
+#         return second
+#     count = 2
+#     while serial_number != count:
+#         third = first + second
+#         first = second
+#         second = third
+#         count += 1
+#         return third
 
 
-            # Задача 18: Требуется найти в массиве A[1..N] самый близкий по величине элемент к заданному числу X.
-            # Пользователь в первой строке вводит натуральное число N – количество элементов в массиве.
-            # В последующих  строках записаны N целых чисел Ai. Последняя строка содержит число X
-            # *Пример:*
-            # 5
-            #     1 2 3 4 5
-            #     6-> 5
+# print(fibonachi_recursion(8))
 
-size = int(input('Количество элементов в списке: '))
-lists_2 = []
-for i in range(size):
-    x = int(input(f'Введите {i + 1} элемента списка: '))
-    lists_2.append(x)
-print(lists_2)
-x = int(input('Число'))
+# import random
+#
+#
+# def a(input_list):
+#     input_list.append(1.9)
+#     result_temp = []
+#     result = []
+#     for i in range(len(input_list) - 1):
+#         if input_list[i] == input_list[i + 1] - 1:
+#             result_temp.append(input_list[i])
+#         else:
+#             if input_list[i] not in result_temp:
+#                 result_temp.append(input_list[i])
+#             result.append(result_temp)
+#             result_temp = []
+#
+#     print(result)
+#     result_str = []
+#     for i in result:
+#         if len(i) >= 2:
+#             result_str.append(f"{i[0]}-{i[-1]}")
+#         else:
+#             result_str.append(f"{i[0]}")
+#     return result_str
+#
+#
+# input_list = sorted(set([random.randint(1, 10) for _ in range(10)]))
+#
+# print(input_list)
+# print(*a(input_list), sep=',')
 
-set_2 = set(lists_2)
-min = abs(x - lists_2[0])
-index = 0
-for i in range(1, size):
-    count = abs(x - lists_2[i])
-    if count < min:
-        min = count
-        index = i
-print(f'Заданное {x} => ближайшее {lists_2[index]} => разница {abs(x - lists_2[index])}')
 
-            # *Задача 20: * В настольной игре Скрабл (Scrabble) каждая буква имеет определенную ценность.
-            # В случае с английским алфавитом очки распределяются так:
-            # A, E, I, O, U, L, N, S, T, R – 1 очко;
-            # D, G – 2 очка;
-            # B, C, M, P – 3 очка;
-            # F, H, V, W, Y – 4 очка;
-            # K – 5 очков;
-            # J, X – 8 очков;
-            # Q, Z – 10 очков.
-            # А русские буквы оцениваются так:
-            # А, В, Е, И, Н, О, Р, С, Т – 1 очко;
-            # Д, К, Л, М, П, У – 2 очка;
-            # Б, Г, Ё, Ь, Я – 3 очка;
-            # Й, Ы – 4 очка;
-            # Ж, З, Х, Ц, Ч – 5 очков;
-            # Ш, Э, Ю – 8 очков;
-            # Ф, Щ, Ъ – 10 очков.
-            # Напишите программу, которая вычисляет стоимость введенного пользователем слова.
-            # Будем считать, что на вход подается только одно слово, которое содержит либо только английские, либо только русские буквы.
-            #
-            # *Пример:*
-            #
-            # ноутбук
-            #     12
 
-eng_letter = {'A': 1, 'E': 1, 'I': 1, 'O': 1, 'U': 1, 'L': 1, 'N': 1, 'S': 1, 'T': 1, 'R': 1,
-              'D': 2, 'G': 2,
-              'B': 3, 'C': 3, 'M': 3, 'P': 3,
-              'F': 4, 'H': 4, 'V': 4, 'W': 4, 'Y': 4,
-              'K': 5,
-              'J': 8, 'X': 8,
-              'Q': 10, 'Z': 10}
-rus_letter = {'А': 1, 'В': 1, 'Е': 1, 'И': 1, 'Н': 1, 'О': 1, 'Р': 1, 'С': 1, 'Т': 1,
-              'Д': 2, 'К': 2, 'Л': 2, 'М': 2, 'П': 2, 'У': 2,
-              'Б': 3, 'Г': 3, 'Ё': 3, 'Ь': 3, 'Я': 3,
-              'Й': 4, 'Ы': 4,
-              'Ж': 5, 'З': 5, 'Х': 5, 'Ц': 5, 'Ч': 5,
-              'Ш': 8, 'Э': 8, 'Ю': 8,
-              'Ф': 10, 'Щ': 10, 'Ъ': 10}
 
-word = input('Введите слово: ').upper()
-summ = 0
 
-for letter in word:
-    if letter in eng_letter:
-        summ += eng_letter[letter]
-    else:
-        summ += rus_letter[letter]
-print(f'Слова {word.lower()} => {summ} очков')
+
+
+
