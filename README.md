@@ -7,6 +7,7 @@ A-Z: AAAABBBCCXYZDDDDEEEFFFAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBB
 Если символ повторяется более 1 раза , к нему добавляется количество повторений
 
 2.Cгруппировать слова по"общим буквам"
+
 Sample Input:
 `["eat", "tea", "tan", "ate", "nat", “bat"]`
 
