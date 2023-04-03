@@ -111,7 +111,6 @@
 
 import random
 
-
 # def count_couple(input_arr: list):
 #     find_couple = 0
 #     number_dict = {}
@@ -129,61 +128,87 @@ import random
 # print(count_couple(array))
 
 
-def sum_of_divisors(input_number: int):
-    sum_result = 0
-    for i in range(1, input_number // 2 + 1):
-        if input_number % i == 0:
-            sum_result += i
-    return sum_result
+# def sum_of_divisors(input_number: int):
+#     sum_result = 0
+#     for i in range(1, input_number // 2 + 1):
+#         if input_number % i == 0:
+#             sum_result += i
+#     return sum_result
+#
+#
+# def friendly_numbers(input_num: int):
+#     find = set()
+#     for i in range(1, input_num + 1):  # i = 220
+#         sum_temp_number = sum_of_divisors(i)  # 284
+#         sum2 = sum_of_divisors(sum_temp_number)
+#         if sum2 == i and sum_temp_number != i and i not in find and sum_temp_number not in find:
+#             print(sum_temp_number, i)
+#             find.add(i)
+#
+#
+# input_k = int(input("Введите число k: "))
+# friendly_numbers(input_k)
+#
+#
+# def rle(some_str):
+#     res_list = []
+#
+#     some_str += ' '
+#     temp_letter = some_str[0]
+#     count_letter = 1
+#     for ind in range(1, len(some_str)):
+#         if some_str[ind] == temp_letter:
+#             count_letter += 1
+#         else:
+#             if count_letter == 1:
+#                 res_list.append(f'{temp_letter}')
+#             else:
+#                 res_list.append(f'{temp_letter}{count_letter}')
+#             count_letter = 1
+#             temp_letter = some_str[ind]
+#     print(res_list)
+#     print(*res_list, sep='')
+#
 
 
-def friendly_numbers(input_num: int):
-    find = set()
-    for i in range(1, input_num + 1):  # i = 220
-        sum_temp_number = sum_of_divisors(i)  # 284
-        sum2 = sum_of_divisors(sum_temp_number)
-        if sum2 == i and sum_temp_number != i and i not in find and sum_temp_number not in find:
-            print(sum_temp_number, i)
-            find.add(i)
+x = int(input())
+
+list = []
+
+for i in range(x):
+    list.append([])
+
+    for j in range(10):
+        list[i].append(random.randint(1, 10))
+        list[i].append(random.randint(1, 10))
+
+print(list)
+
+for st in range(len(list)):
+    for i in st:
+        if i % 10 == 1 or i % 10 == 4  // 10
 
 
-input_k = int(input("Введите число k: "))
-friendly_numbers(input_k)
 
 
-def rle(some_str):
-    res_list = []
-
-    some_str += ' '
-    temp_letter = some_str[0]
-    count_letter = 1
-    for ind in range(1, len(some_str)):
-        if some_str[ind] == temp_letter:
-            count_letter += 1
-        else:
-            if count_letter == 1:
-                res_list.append(f'{temp_letter}')
-            else:
-                res_list.append(f'{temp_letter}{count_letter}')
-            count_letter = 1
-            temp_letter = some_str[ind]
-    print(res_list)
-    print(*res_list, sep='')
 
 
-rle('AAAABBBCCXYZDDDDEEEFFFAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBB')
 
 
-def rle(st):
-    new_list = []
-    new_list = st[0]
 
-    count_l = 1
-    for i in range(1, len(st)):
-        if st[i] == new_list:
-            count_l += 1
-        else:
-            new_list
+n = int(input())
+# some_list = [[i for i in input().split() if i[-1] in ('1', '3')] for _ in range(2 * n)]
 
-rle('AAAABBBCCXYZDDDDEEEFFFAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBB')
+some_list = []
+for _ in range(2 * n):
+    temp_list = []
+    for i in input().split():
+        if i[-1] in ('1', '3'):
+            temp_list.append(i)
+    some_list.append(temp_list)
 
+print(some_list)
+for ind in range(0, len(some_list) - 1, 2):
+    res = list(set(some_list[ind]).intersection(set(some_list[ind + 1])))
+    res = list(map(int, res))
+    print(*sorted(res, reverse=True), sep=' & ')
